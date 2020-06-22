@@ -1,5 +1,7 @@
 package org.fasttrackit.onlineshop.domain;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class Product {
     @NotNull
     private String name;
     private String description;
+
     @NotNull
     private double price;
     private String imageUrl;
