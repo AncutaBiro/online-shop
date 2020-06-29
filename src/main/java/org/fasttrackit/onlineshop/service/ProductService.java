@@ -64,6 +64,7 @@ public class ProductService {
 
     public Page<Product> getProducts (GetProductsRequest request, Pageable pageable) {
 
+
         if(request.getPartialName() != null && request.getMinimumQuantity() != null) {
             return productRepository.findByNameContainingAndQuantityGreaterThanEqual(request.getPartialName(),
                     request.getMinimumQuantity(), pageable);
