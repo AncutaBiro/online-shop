@@ -22,6 +22,7 @@ public class Product {
     @NotNull
     private double price;
     private String imageUrl;
+    @Range(min = 0)
     @NotNull
     private int quantity;
 
