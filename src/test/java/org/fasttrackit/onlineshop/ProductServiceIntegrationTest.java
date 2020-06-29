@@ -28,7 +28,6 @@ class ProductServiceIntegrationTest {
         createProduct();
     }
 
-
     @Test
     void createProduct_whenMissingMandatoryProperties_thenThrowException() {
         SaveProductRequest request = new SaveProductRequest();
@@ -62,6 +61,25 @@ class ProductServiceIntegrationTest {
                 () -> productService.getProduct(0));
 
     }
+
+    @Test
+    void updateProduct_whenValidRequest_thenReturnUpdatedProduct(){
+        Product product = createProduct();
+
+        SaveProductRequest request = new SaveProductRequest();
+
+       request.setName(product.getName() + " Updated");
+       request.setPrice(product.getPrice() + 10);
+       request.setQuantity(product.getQuantity() + 10);
+
+       Product updatedProduct = productService.updateProduct(product.getId(), request);
+
+       assertThat(updatedProduct, notNullValue());
+//       TO BE CONTINUED
+    }
+
+
+
 
 
     private Product createProduct() {
