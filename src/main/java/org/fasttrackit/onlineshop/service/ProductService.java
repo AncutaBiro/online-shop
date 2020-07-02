@@ -20,9 +20,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
-    //lombok dependency for getter-setter etc. fast coding
+    //lombok dependency for getter-setter, constructors, logger etc. fast coding
 
-    //factory dessing pattern
+    //factory design pattern
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
     //IoC (Inversion of Control)
