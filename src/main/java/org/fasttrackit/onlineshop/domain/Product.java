@@ -2,11 +2,11 @@ package org.fasttrackit.onlineshop.domain;
 
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -25,6 +25,10 @@ public class Product {
     @Range(min = 0)
     @NotNull
     private int quantity;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<Cart> carts = new HashSet<>();
+
 
     public long getId() {
         return id;
@@ -75,6 +79,14 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -85,5 +97,18 @@ public class Product {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
