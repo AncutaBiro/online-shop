@@ -1,7 +1,6 @@
 package org.fasttrackit.onlineshop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.fasttrackit.onlineshop.domain.User;
 import org.fasttrackit.onlineshop.exception.ResourceNotFoundException;
 import org.fasttrackit.onlineshop.persistence.UserRepository;
@@ -34,7 +33,7 @@ public class UserService {
     }
 
     public User getUser(long id) {
-        LOGGER.info ("Retreaving user: {}", id);
+        LOGGER.info ("Retrieving user: {}", id);
 
     return userRepository.findById(id).
     orElseThrow (() -> new ResourceNotFoundException ("User" + id + " not found."));

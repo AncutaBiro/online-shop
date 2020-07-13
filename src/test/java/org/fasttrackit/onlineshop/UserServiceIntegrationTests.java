@@ -32,7 +32,7 @@ public class UserServiceIntegrationTests {
         User userResponse = userService.getUser(user.getId());
 
         assertThat(userResponse, notNullValue());
-        assertThat(userResponse.getId(), greaterThan(0l));
+        assertThat(userResponse.getId(), greaterThan(0L));
         assertThat(userResponse.getRole(), is(user.getRole()));
         assertThat(userResponse.getFirstName(), is(user.getFirstName()));
         assertThat(userResponse.getLastName(), is(user.getLastName()));
@@ -48,7 +48,7 @@ public class UserServiceIntegrationTests {
         User user = userService.createUser(request);
 
         assertThat(user, notNullValue());
-        assertThat(user.getId(), greaterThan(0l));
+        assertThat(user.getId(), greaterThan(0L));
         assertThat(user.getRole(), is(request.getRole().name()));
         assertThat(user.getFirstName(), is(request.getFirstName()));
         assertThat(user.getLastName(), is(request.getLastName()));

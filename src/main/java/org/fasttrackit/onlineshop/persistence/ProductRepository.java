@@ -18,6 +18,4 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
             "(:minimumQuantity IS null OR product.quantity >= :minimumQuantity) ")
     Page<Product> findByOptionalCriteria (String partialName, Integer minimumQuantity, Pageable pageable);
 
-
-
 }
