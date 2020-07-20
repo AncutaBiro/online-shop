@@ -62,7 +62,6 @@ class ProductServiceIntegrationTest {
     void getProduct_whenNonExistingProduct_thenThrowResourceNotFoundException() {
         Assertions.assertThrows(ResourceNotFoundException.class,
                 () -> productService.getProduct(0));
-
     }
 
     @Test
@@ -93,7 +92,6 @@ class ProductServiceIntegrationTest {
 
         Assertions.assertThrows(ResourceNotFoundException.class,
                 ()-> productService.getProduct(product.getId()));
-
     }
 
 }

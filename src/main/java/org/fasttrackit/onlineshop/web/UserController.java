@@ -1,6 +1,5 @@
 package org.fasttrackit.onlineshop.web;
 
-
 import org.fasttrackit.onlineshop.domain.User;
 import org.fasttrackit.onlineshop.service.UserService;
 import org.fasttrackit.onlineshop.transfer.user.CreateUserRequest;
