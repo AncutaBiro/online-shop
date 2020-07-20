@@ -4,6 +4,7 @@ import org.fasttrackit.onlineshop.domain.Product;
 import org.fasttrackit.onlineshop.exception.ResourceNotFoundException;
 import org.fasttrackit.onlineshop.service.ProductService;
 import org.fasttrackit.onlineshop.steps.ProductTestSteps;
+import org.fasttrackit.onlineshop.transfer.product.ProductResponse;
 import org.fasttrackit.onlineshop.transfer.product.SaveProductRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,6 @@ import javax.validation.ConstraintViolationException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 
 @SpringBootTest
 class ProductServiceIntegrationTest {
@@ -44,9 +44,9 @@ class ProductServiceIntegrationTest {
 
     @Test
     void getProduct_whenExistingProduct_thenReturnProduct() {
-        Product product = productTestSteps.createProduct();
+        ProductResponse product = productTestSteps.createProduct();
 
-        Product response = productService.getProduct(product.getId());
+        ProductResponse response = productService.getProductResponse(product.getId());
 
         assertThat(response, notNullValue());
         assertThat(response.getId(), is(product.getId()));
@@ -58,15 +58,20 @@ class ProductServiceIntegrationTest {
 
     }
 
+//    // TO CONTINUE
+//    void getProducts_WhenOneExistingProduct_ThenReturnPageOfOneProduct() {
+//
+//    }
+
     @Test
     void getProduct_whenNonExistingProduct_thenThrowResourceNotFoundException() {
         Assertions.assertThrows(ResourceNotFoundException.class,
-                () -> productService.getProduct(0));
+                () -> productService.getProductResponse(0));
     }
 
     @Test
     void updateProduct_whenValidRequest_thenReturnUpdatedProduct() {
-        Product product = productTestSteps.createProduct();
+        ProductResponse product = productTestSteps.createProduct();
 
         SaveProductRequest request = new SaveProductRequest();
 
@@ -74,7 +79,7 @@ class ProductServiceIntegrationTest {
         request.setPrice(product.getPrice() + 10);
         request.setQuantity(product.getQuantity() + 10);
 
-        Product updatedProduct = productService.updateProduct(product.getId(), request);
+        ProductResponse updatedProduct = productService.updateProduct(product.getId(), request);
 
         assertThat(updatedProduct, notNullValue());
         assertThat(updatedProduct.getId(), is(product.getId()));
@@ -86,12 +91,12 @@ class ProductServiceIntegrationTest {
 
     @Test
     void deleteProduct_whenExistingProduct_thenThrowExceptionAsTheProductDoesNotExist () {
-        Product product = productTestSteps.createProduct();
+        ProductResponse product = productTestSteps.createProduct();
 
         productService.deleteProduct(product.getId());
 
         Assertions.assertThrows(ResourceNotFoundException.class,
-                ()-> productService.getProduct(product.getId()));
+                ()-> productService.getProductResponse(product.getId()));
     }
 
 }

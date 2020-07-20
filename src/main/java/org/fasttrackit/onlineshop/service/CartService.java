@@ -50,6 +50,7 @@ public class CartService {
             Product product = productService.getProduct(productId);
 
             cart.addProduct(product);
+
         }
         cartRepository.save(cart);
     }
