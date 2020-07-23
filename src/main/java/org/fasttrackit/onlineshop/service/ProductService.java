@@ -74,7 +74,6 @@ public class ProductService {
 
     public Product getProduct(long id) {
         return productRepository.findById(id)
-                    //lambda expression
                     .orElseThrow(() -> new ResourceNotFoundException("Product" + id + "not found."));
     }
 
@@ -102,7 +101,6 @@ public class ProductService {
         }
 
         return new PageImpl<>(productDtos, pageable, page.getTotalElements());
-
     }
 
     public ProductResponse updateProduct(long id, SaveProductRequest request) {

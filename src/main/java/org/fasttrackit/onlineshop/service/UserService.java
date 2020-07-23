@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public User createUser(CreateUserRequest request) {
-        LOGGER.info("Creating info {}", request);
+        LOGGER.info("Creating user {}", request);
 
         User user = objectMapper.convertValue(request, User.class);
 
@@ -33,10 +33,10 @@ public class UserService {
     }
 
     public User getUser(long id) {
-        LOGGER.info ("Retrieving user: {}", id);
+        LOGGER.info("Retrieving user: {}", id);
 
-    return userRepository.findById(id).
-    orElseThrow (() -> new ResourceNotFoundException ("User" + id + " not found."));
+        return userRepository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException("User" + id + " not found."));
 
     }
 }

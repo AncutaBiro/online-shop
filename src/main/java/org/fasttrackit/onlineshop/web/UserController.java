@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/users")
@@ -21,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser (CreateUserRequest request) {
+    public ResponseEntity<User> createUser (@Valid @RequestBody CreateUserRequest request) {
         User user = userService.createUser(request);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }

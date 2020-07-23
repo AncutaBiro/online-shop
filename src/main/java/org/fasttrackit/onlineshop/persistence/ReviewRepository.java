@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ReviewRepository extends JpaRepository <Review, Long> {
 
     //queries by nested properties
-    Page<Review> findByProductId(long productId, Pageable pageable);
+    Page<Review> findByProductId (long productId, Pageable pageable);
 }
