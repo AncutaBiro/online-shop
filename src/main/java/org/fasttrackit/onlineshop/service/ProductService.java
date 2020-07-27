@@ -35,13 +35,10 @@ public class ProductService {
     //IoC (Inversion of Control)
     private final ProductRepository productRepository;
 
-    private final ObjectMapper objectMapper;
-
     // Dependency injection
     @Autowired
-    public ProductService(ProductRepository productRepository, ObjectMapper objectMapper) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.objectMapper = objectMapper;
     }
 
     public ProductResponse createProduct(SaveProductRequest request) {

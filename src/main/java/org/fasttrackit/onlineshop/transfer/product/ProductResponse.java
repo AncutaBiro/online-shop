@@ -1,9 +1,5 @@
 package org.fasttrackit.onlineshop.transfer.product;
 
-import org.hibernate.validator.constraints.Range;
-
-import javax.validation.constraints.NotNull;
-
 public class ProductResponse {
 
     private long id;
